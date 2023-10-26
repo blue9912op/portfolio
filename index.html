@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="css/Reset.css" />
+    <link rel="stylesheet" href="css/swiper-coverflow.css" />
+    <link rel="stylesheet" href="css/typing.css" />
+    <script src="js/jquery-3.js"></script>
+    <script src="js/typing.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script src="js/coverflow.js"></script>
+    <script
+      src="https://kit.fontawesome.com/87122f15f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        // ---------
+        // ---------
+        // menu bars
+        // ---------
+        // ---------
+        $(window).on("scroll", function () {
+          if ($(window).scrollTop() > 100) {
+            $("#wrap>nav").css({ backgroundColor: "white", color: "black" });
+          } else {
+            $("#wrap>nav").css({ backgroundColor: "", color: "" });
+          }
+          $("#wrap>nav>ul").removeClass("right");
+          $(".light_box").css({ display: "none" });
+          if ($(window).width() < 1024) {
+            $(".fa-bars").css({ display: "block" });
+            $(".fa-x").css({ display: "none" });
+          } else {
+            $(".bars").css({ display: "none" });
+          }
+        });
+
+        $(window).resize(function () {
+          $("#wrap>nav>ul").removeClass("right");
+          $(".light_box").css({ display: "none" });
+          if ($(window).width() < 1024) {
+            $(".fa-bars").css({ display: "block" });
+            $(".fa-x").css({ display: "none" });
+          } else {
+            $(".bars").css({ display: "none" });
+          }
+        });
+        $(".bars").on("click", function () {
+          $("#wrap>nav>ul").toggleClass("right");
+          $(".bars").toggle();
+          $(".light_box").toggle();
+        });
+        $(".bars").hover(
+          function () {
+            $(".bars").addClass("fa-bounce");
+          },
+          function () {
+            $(".bars").removeClass("fa-bounce");
+          }
+        );
+
+        // portfolio 상세 정보 열기
+        $(".swiper-slide").hover(
+          function () {
+            $(this).children(".view_more").slideDown();
+          },
+          function () {
+            $(this).children(".view_more").slideUp();
+          }
+        );
+      });
+    </script>
+    <style>
+      /* ******** */
+      /* ******** */
+      /* ******** */
+      /* wrap-nav */
+      /* ******** */
+      /* ******** */
+      /* ******** */
+
+      #wrap {
+        width: 100%;
+      }
+      #wrap > nav {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0px;
+        z-index: 10;
+        color: white;
+        text-shadow: 5px 5px 5px black;
+        padding: 30px;
+        font-size: 1.5em;
+      }
+
+      .menu_bar {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+      }
+      .menu_bar > li {
+        display: inline-block;
+        width: 22%;
+        text-align: center;
+      }
+      .bars {
+        display: none;
+      }
+      /* ****** */
+      /* ****** */
+      /* ****** */
+      /* header */
+      /* ****** */
+      /* ****** */
+      /* ****** */
+      header {
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+      }
+      #intro {
+        width: 100%;
+        height: 100%;
+        background: url(images/main_img.jpg) no-repeat;
+        background-size: cover;
+      }
+
+      /* ************ */
+      /* ************ */
+      /* ************ */
+      /* main-section */
+      /* ************ */
+      /* ************ */
+      /* ************ */
+      main {
+        width: 90%;
+        margin: 0px auto;
+        padding: 2% 0;
+      }
+      #profile_section {
+        width: 80%;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 5% 0;
+        margin: 0 auto;
+        font-size: 0.8em;
+        justify-content: space-between;
+      }
+      #profile_section > h1 {
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+        font-size: 2.5em;
+      }
+      .profile_info {
+        width: 38%;
+        padding: 0 30px;
+      }
+      .profile_info > h1 {
+        width: 100%;
+        font-size: 1.5em;
+        padding: 10px 0;
+        border-bottom: 2px solid black;
+      }
+      .profile_info > div {
+        text-align: center;
+      }
+      .profile_info > div > p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+      }
+      .profile_education {
+        width: 40%;
+      }
+      .profile_education > h1 {
+        width: 100%;
+        font-size: 1.5em;
+        padding: 10px 0;
+        border-bottom: 2px solid black;
+      }
+      .profile_education > div > p {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        align-items: center;
+      }
+      .profile_education > div > p > span {
+        font-weight: bold;
+      }
+      /* ************* */
+      /* ************* */
+      /* skill-section */
+      /* ************* */
+      /* ************* */
+      #skill_section {
+        width: 100%;
+        padding: 5% 0;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        font-size: 0.8em;
+      }
+      #skill_section > h1 {
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+        font-size: 2.5em;
+      }
+
+      .skill {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .skill_list {
+        width: 100%;
+        text-align: center;
+        margin: 20px auto;
+      }
+      .skill_list > ul {
+        width: 90%;
+        background: gainsboro;
+        border-radius: 100px;
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-around;
+      }
+      .skill_list > ul > li {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .skill_list > ul > li > img {
+        width: 100%;
+        max-width: 100%;
+        height: 100px;
+      }
+      /* ***************** */
+      /* ***************** */
+      /* portfolio_section */
+      /* ***************** */
+      /* ***************** */
+
+      #portfolio_section {
+        width: 100%;
+        padding: 5% 0;
+        position: relative;
+        font-size: 0.8em;
+      }
+      #portfolio_section > h1 {
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+        font-size: 2.5em;
+      }
+
+      /* ************** */
+      /* ************** */
+      /* contact_footer */
+      /* ************** */
+      /* ************** */
+      footer {
+        text-align: center;
+      }
+      footer > h1 {
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+        font-size: 2.5em;
+      }
+      #contact_footer {
+        background: gainsboro;
+        padding: 30px;
+      }
+      .contact_action input,
+      .contact_action textarea {
+        width: 50%;
+        margin: 5px auto;
+        padding: 10px;
+        border-radius: 15px;
+        resize: none;
+        box-shadow: 4px 4px 8px 2px grey;
+      }
+      .contact_action textarea {
+        height: 300px;
+      }
+      #btnSubmit {
+        width: 30%;
+        border-radius: 10px;
+        margin: 10px auto;
+        padding: 5px;
+        font-size: 1.3em;
+      }
+      /* **************** */
+      /* **************** */
+      /* media query 시작 */
+      /* **************** */
+      /* **************** */
+      @media screen and (max-width: 1023px) {
+        .menu_bar {
+          width: 30%;
+          height: 100vh;
+          flex-flow: column wrap;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          right: -30%;
+          background: rgb(199, 199, 192);
+          transition: 0.5s;
+        }
+        .menu_bar > li {
+          display: block;
+          width: 100%;
+          text-align: center;
+          margin: 5%;
+        }
+
+        .bars {
+          display: block;
+          position: absolute;
+          top: 30px;
+          right: 20px;
+          transition: 0.5s;
+          cursor: pointer;
+        }
+        .fa-x {
+          display: none;
+        }
+        .light_box {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 9;
+          display: none;
+        }
+
+        .right {
+          right: 0;
+        }
+        #intro > h1 {
+          font-size: 3em;
+        }
+        .profile_info {
+          width: 100%;
+          padding: 0 30px;
+        }
+        .profile_info > h1 {
+          width: 100%;
+          text-align: center;
+        }
+        .profile_education {
+          width: 100%;
+        }
+        .profile_education > h1 {
+          text-align: center;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        #wrap > nav {
+          font-size: 1.2em;
+        }
+        #btn1 {
+          width: 50%;
+        }
+        .menu_bar {
+          width: 50%;
+          right: -50%;
+        }
+        .right {
+          right: 0;
+        }
+        main {
+          width: 100%;
+
+          padding: 0;
+        }
+
+        #profile_section {
+          width: 90%;
+          font-size: 0.8em;
+        }
+        .profile_info {
+          padding: 0;
+        }
+
+        .skill_list > ul > li > img {
+          width: 70%;
+          max-width: 100%;
+          height: 70px;
+        }
+        #contact_footer {
+          font-size: 0.7em;
+        }
+        .inner-title {
+          font-size: 1.2em;
+        }
+        .contact_action input,
+        .contact_action textarea {
+          width: 80%;
+          margin: 5px auto;
+          padding: 10px;
+          border-radius: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="light_box"></div>
+      <!--배경 이미지 깔것-->
+      <nav>
+        <h1><a href="#">Jang Seong Rak</a></h1>
+        <ul class="menu_bar">
+          <li><a href="#profile_section">ABOUT ME</a></li>
+          <li><a href="#skill_section">SKILLS</a></li>
+          <li><a href="#portfolio_section">PORTFOLIO</a></li>
+          <li><a href="#contact_footer">CONTACT</a></li>
+        </ul>
+        <i class="fa-solid fa-bars bars"></i>
+        <i class="fa-solid fa-x bars"></i>
+      </nav>
+      <header>
+        <div id="intro">
+          <div class="typing-txt">
+            <ul>
+              <li>안녕하세요.</li>
+              <li>항상 발전하는</li>
+              <li>장성락 입니다!</li>
+            </ul>
+          </div>
+          <div class="typing">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section id="profile_section">
+          <h1>ABOUT ME</h1>
+          <div class="profile_info">
+            <h1>프로필</h1>
+            <div>
+              <p><b>생년월일</b> <span>1999.12.07</span></p>
+              <p><b>휴대전화</b> <span>010.9020.8541</span></p>
+              <p><b>이메일</b> <span>seongrak.jang@gmail.com</span></p>
+              <p>
+                <b> 거주지</b>
+                <span
+                  >경기도 김포시 양촌읍 <br />
+                  양곡로 467번길 52, 803-1105</span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="profile_education">
+            <h1>학업 및 교육</h1>
+            <div>
+              <p>UI/UX웹디자인&웹퍼블리셔 과정 <span>수료</span></p>
+              <p>
+                학교법인 숭실대 숭실호스피탈리티 직업전문학교 <br />
+                호텔경영학과
+                <span>졸업</span>
+              </p>
+              <p>한국외식과학고등학교 관광과 <span>졸업</span></p>
+            </div>
+          </div>
+        </section>
+        <section id="skill_section">
+          <h1>SKILLS</h1>
+          <div class="skill">
+            <div class="skill_list">
+              <ul>
+                <li><img src="images/HTML.png" alt="HTML" /></li>
+                <li><img src="images/CSS.png" alt="CSS" /></li>
+                <li><img src="images/JS.png" alt="java Script" /></li>
+                <li><img src="images/jQuery.png" alt="jQuery" /></li>
+              </ul>
+            </div>
+            <div class="skill_list">
+              <ul>
+                <li><img src="images/ps.png" alt="photoshop" /></li>
+                <li><img src="images/AI.png" alt="illurstrator" /></li>
+                <li><img src="images/react.png" alt="React" /></li>
+                <li><img src="images/Bootstrap.png" alt="Bootstrap" /></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="portfolio_section">
+          <h1>PORTFOLIO</h1>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                <a href="#" class="view_more">
+                  <div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Beatae, blanditiis fuga tenetur et, harum suscipit
+                      consectetur rerum est sapiente quaerat a officia non,
+                      tempora necessitatibus soluta accusamus eius atque
+                      nostrum?
+                    </p>
+                    <p>사이트 둘러보기</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                <a href="#" class="view_more">
+                  <div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Beatae, blanditiis fuga tenetur et, harum suscipit
+                      consectetur rerum est sapiente quaerat a officia non,
+                      tempora necessitatibus soluta accusamus eius atque
+                      nostrum?
+                    </p>
+                    <p>사이트 둘러보기</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                <a href="#" class="view_more">
+                  <div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Beatae, blanditiis fuga tenetur et, harum suscipit
+                      consectetur rerum est sapiente quaerat a officia non,
+                      tempora necessitatibus soluta accusamus eius atque
+                      nostrum?
+                    </p>
+                    <p>사이트 둘러보기</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                <a href="#" class="view_more">
+                  <div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Beatae, blanditiis fuga tenetur et, harum suscipit
+                      consectetur rerum est sapiente quaerat a officia non,
+                      tempora necessitatibus soluta accusamus eius atque
+                      nostrum?
+                    </p>
+                    <p>사이트 둘러보기</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="autoplay-progress">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20"></circle>
+              </svg>
+              <span></span>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <h1>CONTACT</h1>
+        <div id="contact_footer">
+          <div class="contact_action">
+            <!-- 구글 스프레드 시트를 활용한 이메일 시트 -->
+            <div class="contact-area bg-color1 p-t-130 p-b-130">
+              <div class="container">
+                <article class="" data-aos="fade-up">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="comment-form">
+                        <!-- <script data-cfasync="false" type="text/javascript" src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script> -->
+                        <div class="inner-title">
+                          <h1 class="heading-5">Send Your Message</h1>
+                        </div>
+                        <form
+                          id="emailForm"
+                          class="gform"
+                          method="POST"
+                          data-email="seongrak.jang@gmail.com"
+                          action="https://script.google.com/macros/s/AKfycbyuiAl93qhuz1cK6d2e0cIYM7h_fzXznsm6b9hLZ7HJFo0C47eM3l6RIfiHZMAZIdGv/exec"
+                        >
+                          <div class="form-row">
+                            <div class="col-md-12">
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="senderEmail"
+                                      name="senderEmail"
+                                      placeholder="Your Email"
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="senderName"
+                                      name="senderName"
+                                      placeholder="Your Name"
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <textarea
+                                      class="form-control"
+                                      id="message"
+                                      name="message"
+                                      rows="5"
+                                      placeholder="Your Message"
+                                    ></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                              <script type="text/javascript">
+                                (function () {
+                                  // get all data in form and return object
+                                  function getFormData(form) {
+                                    var elements = form.elements;
+                                    var honeypot;
+
+                                    var fields = Object.keys(elements)
+                                      .filter(function (k) {
+                                        if (elements[k].name === "honeypot") {
+                                          honeypot = elements[k].value;
+                                          return false;
+                                        }
+                                        return true;
+                                      })
+                                      .map(function (k) {
+                                        if (elements[k].name !== undefined) {
+                                          return elements[k].name;
+                                          // special case for Edge's html collection
+                                        } else if (elements[k].length > 0) {
+                                          return elements[k].item(0).name;
+                                        }
+                                      })
+                                      .filter(function (item, pos, self) {
+                                        return (
+                                          self.indexOf(item) == pos && item
+                                        );
+                                      });
+
+                                    var formData = {};
+                                    fields.forEach(function (name) {
+                                      var element = elements[name];
+
+                                      // singular form elements just have one value
+                                      formData[name] = element.value;
+
+                                      // when our element has multiple items, get their values
+                                      if (element.length) {
+                                        var data = [];
+                                        for (
+                                          var i = 0;
+                                          i < element.length;
+                                          i++
+                                        ) {
+                                          var item = element.item(i);
+                                          if (item.checked || item.selected) {
+                                            data.push(item.value);
+                                          }
+                                        }
+                                        formData[name] = data.join(", ");
+                                      }
+                                    });
+
+                                    // add form-specific values into the data
+                                    formData.formDataNameOrder =
+                                      JSON.stringify(fields);
+                                    formData.formGoogleSheetName =
+                                      form.dataset.sheet || "responses"; // default sheet name
+                                    formData.formGoogleSendEmail =
+                                      form.dataset.email || ""; // no email by default
+
+                                    return {
+                                      data: formData,
+                                      honeypot: honeypot,
+                                    };
+                                  }
+
+                                  function handleFormSubmit(event) {
+                                    // handles form submit without any jquery
+                                    event.preventDefault(); // we are submitting via xhr below
+                                    var form = event.target;
+                                    var formData = getFormData(form);
+                                    var data = formData.data;
+
+                                    // If a honeypot field is filled, assume it was done so by a spam bot.
+                                    if (formData.honeypot) {
+                                      return false;
+                                    }
+
+                                    disableAllButtons(form);
+                                    var url = form.action;
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("POST", url);
+                                    // xhr.withCredentials = true;
+                                    xhr.setRequestHeader(
+                                      "Content-Type",
+                                      "application/x-www-form-urlencoded"
+                                    );
+                                    xhr.onreadystatechange = function () {
+                                      if (
+                                        xhr.readyState === 4 &&
+                                        xhr.status === 200
+                                      ) {
+                                        form.reset();
+                                        var formElements =
+                                          form.querySelector(".form-elements");
+                                        if (formElements) {
+                                          formElements.style.display = "none"; // hide form
+                                        }
+                                        var thankYouMessage =
+                                          form.querySelector(
+                                            ".thankyou_message"
+                                          );
+                                        if (thankYouMessage) {
+                                          thankYouMessage.style.display =
+                                            "block";
+                                          alert(
+                                            "메일 전송에 성공했습니다. 확인 후 회신드리겠습니다."
+                                          );
+                                        }
+                                      }
+                                    };
+                                    // url encode form data for sending as post data
+                                    var encoded = Object.keys(data)
+                                      .map(function (k) {
+                                        return (
+                                          encodeURIComponent(k) +
+                                          "=" +
+                                          encodeURIComponent(data[k])
+                                        );
+                                      })
+                                      .join("&");
+                                    xhr.send(encoded);
+                                  }
+
+                                  function loaded() {
+                                    // bind to the submit event of our form
+                                    var forms =
+                                      document.querySelectorAll("form.gform");
+                                    for (var i = 0; i < forms.length; i++) {
+                                      forms[i].addEventListener(
+                                        "submit",
+                                        handleFormSubmit,
+                                        false
+                                      );
+                                    }
+                                  }
+                                  document.addEventListener(
+                                    "DOMContentLoaded",
+                                    loaded,
+                                    false
+                                  );
+
+                                  function disableAllButtons(form) {
+                                    var buttons =
+                                      form.querySelectorAll("button");
+                                    for (var i = 0; i < buttons.length; i++) {
+                                      buttons[i].disabled = true;
+                                    }
+                                  }
+                                })();
+                              </script>
+                              <div class="form-group m-0">
+                                <button id="btnSubmit" class="btn-submit mt-2">
+                                  Send Message
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style="display: none" class="thankyou_message">
+                            <h2>
+                              <em>Thanks</em> for contacting us! We will get
+                              back to you soon!
+                            </h2>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <a href="tel:010-9020-8541">
+              <p><b> TEL :</b> 010-9020-8541</p>
+            </a>
+          </div>
+          <p>Copyright © 2023 by JANG SEONG RAK All right reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

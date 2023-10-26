@@ -1,0 +1,50 @@
+.typing-txt {
+  display: none;
+}
+
+.typing {
+  position: absolute;
+  bottom: 20%;
+  right: 5%;
+}
+.typing ul li {
+  display: block;
+  font-size: 4em;
+  font-weight: 900;
+  text-shadow: 0px 0px 10px black;
+
+  color: white;
+}
+.typing ul li:first-child {
+  animation: jump 2s infinite;
+  animation-delay: 3s;
+}
+@keyframes jump {
+  0% {
+  }
+  15% {
+    transform: translateY(-20px);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-20px);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+  }
+}
+.typing ul li.on {
+  display: inline-block;
+}
+@media screen and (max-width: 767px) {
+  .typing ul li {
+    display: block;
+    font-size: 2em;
+    font-weight: 900;
+    text-shadow: 0px 0px 10px black;
+  }
+}
